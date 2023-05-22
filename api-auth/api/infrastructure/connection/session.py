@@ -9,7 +9,11 @@ def session_factory() -> Session:
 
 def commit_on_db(model: SQLModel) -> SQLModel:
     with session_factory() as session:
-        session.add(model)
-        session.commit()
-        session.refresh(model)
-        return model
+        try:
+            session.add(model)
+            session.commit()
+        except:
+            session.rollback()
+        else:
+            session.refresh(model)
+            return model
