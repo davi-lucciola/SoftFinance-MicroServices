@@ -1,5 +1,5 @@
 from logging.config import fileConfig
-from decouple import config as decouple_config
+from api.infrastructure.connection import get_connection_string
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
@@ -13,7 +13,7 @@ from api.domain.models import *
 # access to the values within the .ini file in use.
 config = context.config
 
-config.set_main_option('sqlalchemy.url', decouple_config('DATABASE_URL'))
+config.set_main_option('sqlalchemy.url', get_connection_string())
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

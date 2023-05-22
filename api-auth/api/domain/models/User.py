@@ -1,6 +1,6 @@
 from ..security import crypt
-from sqlmodel import SQLModel, Field
 from pydantic import EmailStr
+from sqlmodel import SQLModel, Field
 
 
 class User(SQLModel, table=True):

@@ -1,16 +1,8 @@
 from http import HTTPStatus
-from fastapi import Security, APIRouter, Depends, Response
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi import APIRouter, Depends, Response
+from .interceptors import authenticate
 from ..domain.services import auth_service
-from ..domain.security import decode_token
-from ..domain.models import Token, UserLogin
-
-
-security_bearer = HTTPBearer()
-
-async def authenticate(
-        auth: HTTPAuthorizationCredentials = Security(security_bearer)) -> int:
-    return await decode_token(auth.credentials)
+from ..domain.models import UserLogin, Token
 
 
 router = APIRouter(prefix='/auth', tags=['Auth'])
@@ -23,6 +15,10 @@ async def get_auth(user_id: int = Depends(authenticate)) -> Response:
     }
 
 @router.post('/login', status_code=HTTPStatus.OK)
-async def login(user_login: UserLogin):
+async def login(user_login: UserLogin) -> Response:
     token: Token = await auth_service.login()
-    pass
+    return {
+        'acess_token': token.acess_token,
+        'token_type' : 'Bearer',
+        'user_id': token.user_id
+    }

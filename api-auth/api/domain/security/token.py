@@ -16,13 +16,13 @@ async def decode_token(token: str) -> int:
         token_payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         return await token_payload.get('sub')
     except jwt.ExpiredSignatureError:
-         raise HTTPException (
+        raise HTTPException (
                 detail = 'Token has expired.',
                 status_code = HTTPStatus.UNAUTHORIZED
-            )
+        )
     except jwt.InvalidTokenError:
-            raise HTTPException (
-                detail = 'Invalid Token.',
-                status_code = HTTPStatus.UNAUTHORIZED
-            )
+        raise HTTPException (
+            detail = 'Invalid Token.',
+            status_code = HTTPStatus.UNAUTHORIZED
+        )
 

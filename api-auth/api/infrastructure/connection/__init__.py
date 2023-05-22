@@ -14,7 +14,6 @@ def get_connection_string() -> str:
     f'{USER}{f":{PASSWORD}" if PASSWORD != "" else ""}@{HOST}:{PORT}/{DB}'
 
 
-print(get_connection_string())
 DATABASE_URL: str = get_connection_string()
 engine: Engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 

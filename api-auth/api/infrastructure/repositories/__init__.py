@@ -1,1 +1,1 @@
-__all__ = ['user_repository']
+__all__ = ['user_repository', 'token_repository']
