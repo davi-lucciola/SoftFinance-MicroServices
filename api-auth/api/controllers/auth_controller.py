@@ -8,17 +8,17 @@ from ..domain.models import UserLogin, Token
 router = APIRouter(prefix='/auth', tags=['Auth'])
 
 
-@router.get('/', status_code=HTTPStatus.OK)
+@router.get('/', status_code = HTTPStatus.OK)
 async def get_auth(user_id: int = Depends(authenticate)) -> Response:
-    return {
+    return Response({
         'user_id': user_id
-    }
+    })
 
-@router.post('/login', status_code=HTTPStatus.OK)
+@router.post('/login', status_code = HTTPStatus.OK)
 async def login(user_login: UserLogin) -> Response:
-    token: Token = await auth_service.login()
-    return {
+    token: Token = await auth_service.login(user_login)
+    return Response({
         'acess_token': token.acess_token,
         'token_type' : 'Bearer',
         'user_id': token.user_id
-    }
+    })

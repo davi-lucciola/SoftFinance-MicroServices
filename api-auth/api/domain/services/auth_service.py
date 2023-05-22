@@ -7,7 +7,7 @@ from ...infrastructure.repositories import user_repository, token_repository
 
 
 async def login(user: UserLogin) -> Token:
-    user_in_db: User = user_repository.find_by_field(User, 'email', user)
+    user_in_db: User = user_repository.find_by_email(user.email)
 
     if user_in_db is None or not user.passwords_match(user_in_db.password):
         return HTTPException (

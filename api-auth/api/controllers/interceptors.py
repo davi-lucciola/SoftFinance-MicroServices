@@ -7,6 +7,7 @@ from ..domain.security import decode_token
 
 security_bearer = HTTPBearer()
 
+
 async def authenticate (
     auth: HTTPAuthorizationCredentials = Security(security_bearer)
 ) -> int:

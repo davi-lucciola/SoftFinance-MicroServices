@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "api-auth"
+version = "0.1.0"
+description = ""
+authors = ["Davi Lucciola <davilucciola14@gmail.com>"]
+readme = "../README.md"
+packages = [{include = "api"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.95.2"
+uvicorn = "^0.22.0"
+ormar = "^0.12.1"
+alembic = "^1.11.1"
+python-decouple = "^3.8"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
