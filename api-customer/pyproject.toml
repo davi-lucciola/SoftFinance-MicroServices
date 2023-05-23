@@ -7,14 +7,15 @@ readme = "../README.md"
 packages = [{include = "api"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10.6"
 fastapi = "^0.95.2"
 uvicorn = "^0.22.0"
-ormar = "^0.12.1"
 alembic = "^1.11.1"
 python-decouple = "^3.8"
-psycopg2-binary = "^2.9.6"
 
+
+[tool.poetry.group.dev.dependencies]
+ormar = {extras = ["sqlite"], version = "^0.12.1"}
 
 [build-system]
 requires = ["poetry-core"]

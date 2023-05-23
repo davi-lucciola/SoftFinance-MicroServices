@@ -13,7 +13,7 @@ class User(SQLModel, table=True):
     def hash_password(self) -> None:
         self.password: str = crypt.hash_password(self.password)
 
-class UserIn(SQLModel, table=False):
+class UserIn(SQLModel):
     email: EmailStr
     password: str
     confirm_password: str

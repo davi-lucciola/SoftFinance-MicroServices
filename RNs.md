@@ -10,13 +10,21 @@
 - email
 - senha
 
+### Token
+
+- id
+- data_criacao
+- data_expiracao
+- usuario_id
+- token_de_acesso
+
 ## Api Cliente (Recursos do Cliente)
 
 ### Cartao
 
 - id
 - limite
-- gasto_total -> soma da coluna pagamentos.valor
+- gasto_total -> soma das operacoes do usuario
 - usuario_id (Foreing Key)
 
 ### Categoria
@@ -42,6 +50,7 @@
 - categoria_id (Foreing Key)
 
 # Pagamento
+
 - id
 - operacao_id
 - parcelas_pagas
