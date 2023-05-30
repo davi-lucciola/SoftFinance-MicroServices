@@ -6,7 +6,7 @@ from sqlalchemy.engine import Engine, create_engine
 
 
 def get_connection_string() -> str:
-    db_path = os.path.join(os.getcwd(), 'api', 'infrastructure')
+    db_path = os.path.join(os.getcwd(), 'app', 'infrastructure', 'database')
 
     # HOST = config('HOST')
     # USER = config('POSTGRES_USER')

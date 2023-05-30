@@ -43,6 +43,7 @@
 
 - id
 - usuario_id (Foreing Key)
+- cartao_id (Foreing Key)
 - data_operacao
 - valor_total
 - tipo -> Enum: ['Crédito', ]
@@ -65,4 +66,5 @@
 - data_vencimento
 - usuario_id
 - valor_total
+- cartao_id
 - status_pagamento -> Enum Status: ['ABERTA', 'FECHADA', 'VENCIDA']

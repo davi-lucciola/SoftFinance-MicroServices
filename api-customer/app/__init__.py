@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .controllers import card_controller
-from .infrastructure.connection import create_tables
+from .infrastructure.database import create_tables
 
 
 def create_app(title: str, description: str) -> FastAPI:
@@ -10,6 +10,8 @@ def create_app(title: str, description: str) -> FastAPI:
     )
 
     app = include_routers(app)
+    app = init_db(app)
+    return app
 
 def include_routers(app: FastAPI) -> FastAPI:
     app.include_router(card_controller.router)

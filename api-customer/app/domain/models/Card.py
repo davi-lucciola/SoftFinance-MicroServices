@@ -1,15 +1,13 @@
+from . import BaseMeta
 from ormar import (
     Model, Integer, String, Decimal, ForeignKeyField, ForeignKey
 )
-from ...infrastructure.connection import database, metadata
 
 
 class Card(Model):
-    class Meta:
-        tablename = 'cards'
-        database = database
-        metadata = metadata
-    
+    class Meta(BaseMeta):
+        pass
+
     id: int = Integer(primary_key=True, autoincrement=True)
     bank: str = String(min_length=2, max_length=255,nullable=False)
     card_number: str = String(min_length=14, max_length=20)
